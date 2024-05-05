@@ -214,8 +214,15 @@ export default class Game {
           });
           //if it's not active
         } else {
-          torn = (torn + 1) % this.playersArray.length;
+          
+          const myinfo = document.getElementById(`playerInfo-${torn + 1}`);
+          if (myinfo) {
+            myinfo.style.filter = "blur(10px)";
+          } else {
+            console.error("Element with ID playerInfo-" + torn + " not found.");
+          }
 
+          torn = (torn + 1) % this.playersArray.length;
           this.jugada(torn, currentDeck);
         }
         //if it's bank torn
@@ -273,6 +280,8 @@ export default class Game {
             }
           }
         }
+
+
         torn = (torn + 1) % this.playersArray.length;
         this.jugada(torn, currentDeck);
       }
@@ -281,12 +290,14 @@ export default class Game {
       let winner = this.playersArray.find(
         (player) => player.state === "active"
       );
-      // Get all buttons on the page
+      winner.money += this.moneyToPlayWith * this.playersArray.length;
       const buttons = document.querySelectorAll("button");
 
       // Iterate through each button and disable it
       buttons.forEach((button) => {
         button.disabled = true;
+        button.style.backgroundColor = "green";
+        button.style.color = "white";
       });
 
       Swal.fire({
@@ -296,23 +307,22 @@ export default class Game {
         showConfirmButton: true,
         timer: 1500,
       });
-
-     /*  alert(`The Winner Is ${winner.name}`);
-     */}
+    }
   }
 
-  updateMoney(arr, money) {
+  /*  updateMoney(arr, money) {
     for (let i = 0; i < arr.length; i++) {
       const mymoney = document.getElementById(`playerMoney-${i + 1}`);
 
       if (arr[i].state === "active") {
-        arr[i].money += money - this.moneyToPlayWith;
+        arr[i].money += money * arr.length;
       } else {
-        arr[i].money -= money / arr.length;
+        arr[i].money -= money;
       }
+      alert(`player ${arr[i].name} money is ${arr[i].money} `);
       mymoney.textContent = "Player Money : " + arr[i].money;
     }
-  }
+  } */
 
   updatePlayerCards(torn, card, totalpts) {
     const mypoints = document.getElementById(`playerPoints-${torn + 1}`);

@@ -6,68 +6,35 @@
     <title>Document</title>
     <link rel="stylesheet" href="setimig.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
   </head>
   <body>
-    <div class="part1">
-      <form id="myform" action="">
-        <label for="quantity">Enter Number of Players (between 1 and 5):</label>
-        <input
-          type="number"
-          id="myinput"
-          name="quantity"
-          min="2"
-          max="5"
-          value=""
-        />
-      </form>
-    </div>
-  <!--   <div id="part2 "> 
-      <div class="playerContainer" id="player0">
-        <p class="playerName">Player Name :</p>
-        <input
-          id="playerNameInput0"
-          type="text"
-          class="playerNameInput"
-          value="Bank"
-          readonly="true"
-        />
-        <p class="playerMoney">Player Money :</p>
-        <input
-          id="playerMoneyInput0"
-          type="number"
-          class="playerMoneyInput"
-          value="200"
-        />
+    <div class="video-container">
+      <video autoplay loop muted id="background-video">
+        <source src="vid.mp4" type="video/mp4" />
+       </video>
+      <div class="content">
+        <div class="part1">
+          <form id="myform" action="">
+            <label for="quantity" id="enter"
+              >Enter Number of Players (between 1 and 5):</label
+            >
+            <input
+              type="number"
+              id="myinput"
+              name="quantity"
+              min="2"
+              max="5"
+              value=""
+            />
+          </form>
+        </div>
+
+        <div id="part4">
+          <button id="start" class="button-64" role="button">
+            <span class="text" >START</span>
+          </button>
+        </div>
       </div>
-      <div class="playerContainer">
-        <p class="playerName">Player Name :</p>
-        <input
-          type="text"
-          class="playerName"
-          id="playerNameInput1"
-          value="Player1"
-        />
-        <p class="playerMoney">Player Money :</p>
-        <input
-          type="number"
-          class="playerMoneyInput"
-          id="playerMoneyInput1"
-          value="200"
-        />
-      </div>
-    </div>
-    <div class="part3">
-      <form id="myform2" action="">
-        <label for="quantity">Enter Money to play with :</label><br />
-        <input type="number" id="myinput" name="quantity" value="100" />
-      </form>
-    </div>
--->
-    <div id="part4">
-      <button id="start" class="button-64" role="button">
-        <span class="text">START</span>
-      </button>
     </div>
   </body>
   <script src="Main.js" type="module"></script>

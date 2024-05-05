@@ -5,16 +5,34 @@ let arrNames = [];
 let arrMoney = [];
 myform.addEventListener("change", function () {
   /*add number of player's input */
+
   document.body.innerHTML = "";
+
+  const video = document.createElement("video");
+  video.autoplay = true;
+  video.loop = true;
+  video.muted = true;
+  video.id = "background-video";
+  video.style.position = "fixed";
+  video.style.top = "0";
+  video.style.left = "0";
+  video.style.minWidth = "100%";
+  video.style.minHeight = "100%";
+  video.style.zIndex = "-1";
+  video.style.filter = "blur(10px)"; // Adjust the blur amount as needed
+  video.innerHTML = '<source src="vid.mp4" type="video/mp4">';
+  document.body.appendChild(video);
+
   myform.style.border = "2px solid black";
   myform.style.margin = "10px";
   myform.style.padding = "10px";
-  myform.style.background = "aqua";
+  myform.style.background = "rgb(41, 106, 106)";
   myform.style.textAlign = "center";
   document.body.appendChild(myform);
 
   /* create player cards  */
   const container = document.createElement("div");
+
   container.id = "part2";
 
   const numberOfPlayer = document.getElementById("myinput");
@@ -22,6 +40,11 @@ myform.addEventListener("change", function () {
 
   for (let i = 0; i < numPlayer; i++) {
     const player = document.createElement("div");
+
+    player.style.backgroundImage = "url('player.jpg')"; // Replace 'your_background_image.jpg' with the path to your image
+    player.style.backgroundSize = "cover"; // Adjust as needed
+    player.style.backgroundPosition = "center"; // Adjust as needed
+
     player.className = `playerContainer`;
     //player.id = `player${i + 1}`;
 
@@ -41,7 +64,6 @@ myform.addEventListener("change", function () {
     }
 
     const playerMoney = document.createElement("p");
-    //playerMoney.id = `playerMoney${i + 1}`;
     playerMoney.className = "playerMoney";
     playerMoney.textContent = "Player Money :";
     const playerMoneyInput = document.createElement("input");
@@ -85,6 +107,7 @@ myform.addEventListener("change", function () {
   const moneyToPlayWith = document.createElement("p");
   moneyToPlayWith.className = `moneyToPlayWith`;
   moneyToPlayWith.textContent = "Enter Money to Play with : ";
+  moneyToPlayWith.id = "enter";
 
   const moneyToPlayWithInput = document.createElement("input");
   moneyToPlayWithInput.id = `moneyToPlayWithInput`;
@@ -108,7 +131,7 @@ myform.addEventListener("change", function () {
     }
     const game = new Game();
 
-    game.getInfo(moneyToPlayWithInput.value, arrNames, arrMoney,0);
+    game.getInfo(moneyToPlayWithInput.value, arrNames, arrMoney, 0);
 
     game.startGame();
     game.play();
