@@ -214,7 +214,6 @@ export default class Game {
           });
           //if it's not active
         } else {
-          
           const myinfo = document.getElementById(`playerInfo-${torn + 1}`);
           if (myinfo) {
             myinfo.style.filter = "blur(10px)";
@@ -271,16 +270,11 @@ export default class Game {
                   timer: 1500,
                 });
 
-                /* alert(
-                  this.playersArray[0].name +
-                    " is eliminated, has depassed 7.5 "
-                ); */
                 break;
               }
             }
           }
         }
-
 
         torn = (torn + 1) % this.playersArray.length;
         this.jugada(torn, currentDeck);
@@ -307,6 +301,11 @@ export default class Game {
         showConfirmButton: true,
         timer: 1500,
       });
+
+      
+      setTimeout(function () {
+        location.reload();
+      }, 2500);
     }
   }
 
